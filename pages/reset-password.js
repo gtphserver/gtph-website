@@ -6,22 +6,33 @@ export default function ResetPassword() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
-    const res = await fetch('/api/auth/reset-password', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      setSuccess('Password reset link sent to your email.');
-      setTimeout(() => Router.push('/login'), 3000); // Redirect after 3 seconds
-    } else {
-      setError(data.message || 'Something went wrong. Please try again.');
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await res.json();
+      setIsLoading(false);
+
+      if (data.success) {
+        setSuccess('Password reset link sent to your email.');
+        setTimeout(() => Router.push('/login'), 3000); // Redirect after 3 seconds
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError('An unexpected error occurred. Please try again later.');
     }
   };
 
@@ -43,8 +54,12 @@ export default function ResetPassword() {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button}>
-            Reset Password
+          <button 
+            type="submit" 
+            className={styles.button} 
+            disabled={isLoading || !email}
+          >
+            {isLoading ? 'Sending...' : 'Reset Password'}
           </button>
         </form>
       </div>
