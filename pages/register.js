@@ -7,20 +7,31 @@ export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const res = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, username, password }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      Router.push('/login');
-    } else {
-      setError(data.message || 'Something went wrong. Please try again.');
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, username, password }),
+      });
+
+      const data = await res.json();
+      setIsLoading(false);
+
+      if (data.success) {
+        Router.push('/login');
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError('An unexpected error occurred. Please try again later.');
     }
   };
 
@@ -54,7 +65,9 @@ export default function Register() {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button}>Register</button>
+          <button type="submit" className={styles.button} disabled={isLoading || !email || !username || !password}>
+            {isLoading ? 'Registering...' : 'Register'}
+          </button>
         </form>
         <p className={styles.footer}>
           Already have an account? <a href="/login" className={styles.link}>Login here</a>
