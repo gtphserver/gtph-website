@@ -6,20 +6,30 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const res = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      Router.push('/dashboard');
-    } else {
-      setError(data.message || 'Invalid email or password. Please try again.');
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      setIsLoading(false);
+
+      if (data.success) {
+        Router.push('/dashboard');
+      } else {
+        setError(data.message || 'Invalid email or password. Please try again.');
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError('An unexpected error occurred. Please try again later.');
     }
   };
 
@@ -46,7 +56,9 @@ export default function Login() {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button}>Login</button>
+          <button type="submit" className={styles.button} disabled={isLoading || !email || !password}>
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
           <p className={styles.linkText}>
             Forgot your password? <a href="/reset-password" className={styles.link}>Reset here</a>
           </p>
