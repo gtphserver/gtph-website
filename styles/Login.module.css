@@ -1,0 +1,112 @@
+/* General container settings */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, rgba(26, 32, 44, 1) 0%, rgba(44, 58, 74, 1) 100%); /* Dark gradient for elegance */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Form container */
+  .formContainer {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Modern shadow effect */
+    width: 100%;
+    max-width: 420px;
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f1f1f1;
+  }
+  
+  .input:focus {
+    border-color: #1f80e0;
+    background-color: #fff;
+    outline: none;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 14px;
+    background-color: #1f80e0;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+  }
+  
+  .button:hover {
+    background-color: #1479b1;
+  }
+  
+  .linkText {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .link {
+    color: #1f80e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .link:hover {
+    color: #1479b1;
+  }
+  
+  /* Error message styling */
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  
+  /* Animation for sliding in effect */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

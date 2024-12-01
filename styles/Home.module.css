@@ -1,0 +1,63 @@
+/* General container style */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .header {
+    margin-top: 50px;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ff758c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button:hover {
+    background-color: #e65373;
+    transform: scale(1.05);
+  }
+  
+  .footer {
+    margin-top: 50px;
+    font-size: 0.875rem;
+  }
+  
+  .footer p {
+    color: rgba(255, 255, 255, 0.7);
+  }  

@@ -1,0 +1,40 @@
+{
+  "name": "gtph-private-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^13.5.2",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "axios": "^1.4.0",
+    "react-google-recaptcha": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "license": "MIT",
+  "description": "A private server for GTPH with Google reCAPTCHA integration for secure authentication.",
+  "author": "gtph",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gtphserver/gtph-website"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "google-recaptcha",
+    "private-server",
+    "nodemailer"
+  ]
+}

@@ -1,0 +1,110 @@
+/* General container settings */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8e44ad, #3498db); /* Stylish gradient for freshness */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Form container */
+  .formContainer {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 45px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 420px;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f1f1f1;
+  }
+  
+  .input:focus {
+    border-color: #8e44ad;
+    background-color: #fff;
+    outline: none;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 14px;
+    background-color: #8e44ad;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+  }
+  
+  .button:hover {
+    background-color: #732d91;
+  }
+  
+  /* Footer link styling */
+  .footer {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+  
+  .link {
+    color: #8e44ad;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .link:hover {
+    color: #732d91;
+  }
+  
+  /* Error message styling */
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  
+  /* Animation for fade-in effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
