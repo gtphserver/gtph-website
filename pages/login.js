@@ -14,7 +14,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch('https://login.gtphprivateserver.site/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -23,7 +23,7 @@ export default function Login() {
       setIsLoading(false);
 
       if (data.success) {
-        Router.push('/dashboard');
+        Router.push('/dashboard'); // Update as per your route structure
       } else {
         setError(data.message || 'Invalid email or password. Please try again.');
       }
