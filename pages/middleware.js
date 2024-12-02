@@ -1,18 +1,19 @@
 import { NextResponse } from 'next/server';
+import { url } from 'next/dist/compiled/@edge-runtime/primitives/url';
 
-export function middleware(request) {
-  const { pathname, hostname } = request.nextUrl;
-  
-  // Match subdomains
-  const subdomain = hostname.split('.')[0]; // e.g., "register" or "login"
-  
-  if (subdomain === 'register' && pathname === '/') {
-    return NextResponse.rewrite(new URL('/register', request.url));
-  }
-  
-  if (subdomain === 'login' && pathname === '/') {
-    return NextResponse.rewrite(new URL('/login', request.url));
+export async function middleware(req) {
+  const { pathname } = req.nextUrl;
+
+  // Redirect for /login and /register to subdomains
+  if (pathname === '/login') {
+    const loginUrl = new URL('https://login.gtphprivateserver.site');
+    return NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next(); // Continue with default behavior
+  if (pathname === '/register') {
+    const registerUrl = new URL('https://register.gtphprivateserver.site');
+    return NextResponse.redirect(registerUrl);
+  }
+
+  return NextResponse.next();
 }
