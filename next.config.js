@@ -3,7 +3,11 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/register', // Redirect root of subdomain to /register
+        destination: '/register', // Redirect subdomain root to the register page
+      },
+      {
+        source: '/login',
+        destination: '/login', // Directly serve the login page
       },
     ];
   },
