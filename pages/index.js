@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -10,12 +9,12 @@ export default function Home() {
           Your gateway to endless fun! Join the adventure now.
         </p>
         <div className={styles.buttons}>
-          <Link href="/login">
+          <a href="https://login.gtphprivateserver.site" className={styles.link}>
             <button className={styles.button}>Login</button>
-          </Link>
-          <Link href="/register">
+          </a>
+          <a href="https://register.gtphprivateserver.site" className={styles.link}>
             <button className={styles.button}>Register</button>
-          </Link>
+          </a>
         </div>
       </header>
       <footer className={styles.footer}>
