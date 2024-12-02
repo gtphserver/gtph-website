@@ -19,11 +19,18 @@ export default function Login() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
+
+      // Check if the response is successful (status code 2xx)
+      if (!res.ok) {
+        throw new Error('Failed to authenticate');
+      }
+
       const data = await res.json();
       setIsLoading(false);
 
       if (data.success) {
-        Router.push('/dashboard'); // Update as per your route structure
+        // Redirect to the dashboard or another page after a successful login
+        Router.push('/dashboard');
       } else {
         setError(data.message || 'Invalid email or password. Please try again.');
       }
@@ -56,14 +63,24 @@ export default function Login() {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button} disabled={isLoading || !email || !password}>
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={isLoading || !email || !password}
+          >
             {isLoading ? 'Logging in...' : 'Login'}
           </button>
           <p className={styles.linkText}>
-            Forgot your password? <a href="/reset-password" className={styles.link}>Reset here</a>
+            Forgot your password?{' '}
+            <a href="/reset-password" className={styles.link}>
+              Reset here
+            </a>
           </p>
           <p className={styles.linkText}>
-            Don’t have an account? <a href="/register" className={styles.link}>Register now</a>
+            Don’t have an account?{' '}
+            <a href="/register" className={styles.link}>
+              Register now
+            </a>
           </p>
         </form>
       </div>
