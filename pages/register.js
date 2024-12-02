@@ -25,7 +25,7 @@ export default function Register() {
       setIsLoading(false);
 
       if (data.success) {
-        Router.push('/login');
+        Router.push('/login'); // Redirect to login after successful registration
       } else {
         setError(data.message || 'Something went wrong. Please try again.');
       }
@@ -65,12 +65,17 @@ export default function Register() {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button} disabled={isLoading || !email || !username || !password}>
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={isLoading || !email || !username || !password}
+          >
             {isLoading ? 'Registering...' : 'Register'}
           </button>
         </form>
         <p className={styles.footer}>
-          Already have an account? <a href="/login" className={styles.link}>Login here</a>
+          Already have an account?{' '}
+          <a href="/login" className={styles.link}>Login here</a>
         </p>
       </div>
     </div>
