@@ -15,7 +15,7 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      const res = await fetch('https://register.gtphprivateserver.site/api/auth/register', {
+      const res = await fetch('api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, username, password }),
